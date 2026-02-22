@@ -1,24 +1,22 @@
 from pydantic_settings import BaseSettings, SettingsConfigDict
-
+from urllib.parse import quote_plus
 
 class AppConfig(BaseSettings):
-    DATABASE_URL: str | None = None
     DATABASE_NAME: str
-    DATABASE_HOST: str
-    DATABASE_PORT: str
     DATABASE_USER: str
     DATABASE_PASSWORD: str
+    DATABASE_HOST: str
+    DATABASE_PORT: int
+    DATABASE_URL: str | None = None
 
-    model_config = SettingsConfigDict(
-        env_file=".env",
-        case_sensitive=True
-    )
+    model_config = SettingsConfigDict(env_file=".env")
 
-    def database_config(self):
-        self.DATABASE_URL = f"postgresql+asyncpg://{self.DATABASE_USER}:{self.DATABASE_PASSWORD}@{self.DATABASE_PORT}/{self.DATABASE_NAME}"
+    def database_init(self):
+        self.DATABASE_URL = f"postgresql+asyncpg://{self.DATABASE_USER}:{self.DATABASE_PASSWORD}@{self.DATABASE_HOST}/{self.DATABASE_NAME}"
 
-# the object for the class here
+
+# instantiate AFTER the class is defined
 AppConfig = AppConfig()
 
-# we will call the connection string here
-AppConfig.database_config()
+AppConfig.database_init()
+

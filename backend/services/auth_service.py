@@ -9,7 +9,7 @@ from schemas.user.user_schema import CreateUserAccount
 # we will have all the services for create the user account here
 class AuthService:
 
-    async def get_user_by_email(self, email: EmailStr, session: AsyncSession = Depends(app_session)) -> dict:
+    async def get_user_by_email(self, email: EmailStr, session: AsyncSession) -> dict:
         statement = select(User).where(User.email == email)
         results = await session.exec(statement)
 
@@ -17,8 +17,8 @@ class AuthService:
         return user
 
 
-    async def check_if_user_exists(self, email: EmailStr, session: AsyncSession = Depends(app_session)) -> bool:
-        user = await self.get_user_by_email(email)
+    async def check_if_user_exists(self, email: EmailStr, session: AsyncSession) -> bool:
+        user = await self.get_user_by_email(email = email, session = session)
 
         if user is not None:
             return True

@@ -7,6 +7,7 @@ class AppConfig(BaseSettings):
     DATABASE_PASSWORD: str
     DATABASE_HOST: str
     DATABASE_PORT: int
+    PASSWORD_HASHING_SCHEME: str
     DATABASE_URL: str | None = None
 
     model_config = SettingsConfigDict(env_file=".env")

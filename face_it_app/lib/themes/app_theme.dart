@@ -47,7 +47,7 @@ class AppTheme {
       border: OutlineInputBorder(borderRadius: BorderRadius.circular(5)),
       contentPadding: const EdgeInsets.symmetric(vertical: 18, horizontal: 10),
       errorBorder: OutlineInputBorder(
-        borderSide: BorderSide(color: AppColors.primaryMainRed, width: 3),
+        borderSide: BorderSide(color: AppColors.primaryMainRed, width: 2),
       ),
       errorStyle: TextStyle(color: AppColors.primaryMainRed),
     ),

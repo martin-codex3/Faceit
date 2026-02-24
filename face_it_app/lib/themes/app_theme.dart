@@ -40,14 +40,15 @@ class AppTheme {
       elevation: 0.0,
       surfaceTintColor: Colors.transparent,
       centerTitle: true,
+      toolbarHeight: 40,
     ),
 
     // for the input field here
     inputDecorationTheme: InputDecorationThemeData(
       border: OutlineInputBorder(borderRadius: BorderRadius.circular(5)),
-      contentPadding: const EdgeInsets.symmetric(vertical: 18, horizontal: 10),
+      contentPadding: const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
       errorBorder: OutlineInputBorder(
-        borderSide: BorderSide(color: AppColors.primaryMainRed, width: 2),
+        borderSide: BorderSide(color: AppColors.primaryMainRed, width: 1),
       ),
       errorStyle: TextStyle(color: AppColors.primaryMainRed),
     ),
@@ -64,7 +65,7 @@ class AppTheme {
           fontWeight: FontWeight.w700,
         ),
         iconColor: AppColors.primaryBlack,
-        padding: const EdgeInsets.all(14),
+        padding: const EdgeInsets.all(12),
       ),
     ),
   );

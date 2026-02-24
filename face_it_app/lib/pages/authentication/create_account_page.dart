@@ -132,7 +132,7 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                             controller: _email,
                             keyboardType: TextInputType.emailAddress,
                             decoration: InputDecoration(
-                              suffixIcon: Icon(TablerIcons.calendar_month),
+                              suffixIcon: Icon(TablerIcons.message),
                             ),
                             onTapOutside: (event) {
                               FocusScope.of(context).unfocus();

@@ -31,13 +31,6 @@ async def create_account(user_data: CreateUserAccount, session: AsyncSession = D
             status_code=status.HTTP_200_OK,
             content = {
                 "message": "Account created successfully",
-                "user": {
-                    "fullname": new_user.fullname,
-                    "email": new_user.email,
-                    "phone_number": new_user.phone_number,
-                    "password": new_user.password,
-                    "is_verified": new_user.is_verified
-                }
             }
         )
 

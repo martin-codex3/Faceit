@@ -1,9 +1,13 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Request, status
 from routes.auth_routes.auth_routes import auth_routes
 from contextlib import asynccontextmanager
 from connection.app_database_connection import database_init
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.exceptions import RequestValidationError
+from fastapi.responses import JSONResponse
+from starlette.exceptions import HTTPException as StarletteHTTPException
+from starlette.responses import PlainTextResponse
+
 # the life span for the app
 @asynccontextmanager
 async def app_lifespan(app: FastAPI):
@@ -14,7 +18,7 @@ async def app_lifespan(app: FastAPI):
 # we will define the origins to be accepted here
 origins = [
     "http://localhost:8080",
-    "https://192.168.1.189:8000"
+    "http://192.168.1.189:8000",
 ]
 
 
@@ -24,7 +28,6 @@ app = FastAPI(
     lifespan=app_lifespan
 )
 
-
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
@@ -33,13 +36,28 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+@app.exception_handler(StarletteHTTPException)
+async def http_exception_handler(request, exc):
+    return PlainTextResponse(str(exc.detail), status_code=exc.status_code)
+
+
 # we will customize how we get the errors here
 @app.exception_handler(RequestValidationError)
-async def validation_exception_handler(request, exc: RequestValidationError):
-    errors = {}
+async def validation_exception_handler(request: Request, exc: RequestValidationError):
+    all_errors = {}
     for error in exc.errors():
-        errors[error["loc"][-1]] = error["msg"]
-        print(errors)
+        loc = error["loc"][-1]
+        msg = error["msg"]
+
+        all_errors[loc] = msg
+
+    return JSONResponse(
+        status_code=status.HTTP_422_UNPROCESSABLE_CONTENT,
+        content={
+            "message": "Invalid Data, correct the errors!",
+            "errors": all_errors
+        }
+    )
 
 
 # we will register the auth routes here

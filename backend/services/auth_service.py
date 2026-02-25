@@ -30,10 +30,9 @@ class AuthService:
         user = user_data.model_dump()
         new_user = User(**user)
         if new_user is not None:
-            new_user.password = hash_user_password(user["password"])
+            new_user.password = hash_user_password(new_user.password)
             session.add(new_user)
             await session.commit()
             await session.refresh(new_user)
             return new_user
-        else:
-            return None
+        return None

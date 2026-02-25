@@ -2,9 +2,10 @@ import 'package:face_it_app/pages/authentication/create_account_page.dart';
 import 'package:face_it_app/pages/home_page/home_page.dart';
 import 'package:flutter/material.dart';
 import 'themes/app_theme.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(ProviderScope(child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {

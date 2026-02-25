@@ -8,8 +8,9 @@ abstract class User with _$User {
   const factory User({
     required String fullname,
     required String email,
-    required String phoneNumber,
-    required String username,
+
+    @JsonKey(name: "phone_number") required String phoneNumber,
+
     required String password,
   }) = _User;
 

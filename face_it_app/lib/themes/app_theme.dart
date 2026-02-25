@@ -40,13 +40,14 @@ class AppTheme {
       elevation: 0.0,
       surfaceTintColor: Colors.transparent,
       centerTitle: true,
-      toolbarHeight: 40,
+      toolbarHeight: 60,
     ),
 
     // for the input field here
     inputDecorationTheme: InputDecorationThemeData(
       border: OutlineInputBorder(borderRadius: BorderRadius.circular(5)),
       contentPadding: const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
+      outlineBorder: BorderSide(width: 1),
       errorBorder: OutlineInputBorder(
         borderSide: BorderSide(color: AppColors.primaryMainRed, width: 1),
       ),
@@ -67,6 +68,19 @@ class AppTheme {
         iconColor: AppColors.primaryBlack,
         padding: const EdgeInsets.all(12),
       ),
+    ),
+
+    // for the snackbar here
+    snackBarTheme: SnackBarThemeData(
+      elevation: 0.0,
+      behavior: SnackBarBehavior.floating,
+      contentTextStyle: TextStyle(color: Colors.black),
+    ),
+
+    // for the bottom app bar
+    bottomAppBarTheme: BottomAppBarThemeData(
+      elevation: 0,
+      surfaceTintColor: Colors.transparent,
     ),
   );
 }

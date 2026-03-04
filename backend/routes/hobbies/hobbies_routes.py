@@ -62,7 +62,7 @@ all_hobbies: list[dict] = [
 
 
 
-@hobbies_router.get("/", status_code=status.HTTP_200_OK)
+@hobbies_router.get("/hobbies", status_code=status.HTTP_200_OK)
 async def index():
     return JSONResponse(
         status_code=status.HTTP_200_OK,

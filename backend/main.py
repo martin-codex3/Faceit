@@ -7,6 +7,7 @@ from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
 from starlette.exceptions import HTTPException as StarletteHTTPException
 from starlette.responses import PlainTextResponse
+from routes.hobbies.hobbies_routes import hobbies_router
 
 # the life span for the app
 @asynccontextmanager
@@ -19,6 +20,7 @@ async def app_lifespan(app: FastAPI):
 origins = [
     "http://localhost:8080",
     "http://192.168.1.189:8000",
+    "http://192.168.100.68:8000"
 ]
 
 
@@ -65,4 +67,10 @@ app.include_router(
     router=auth_routes,
     prefix="/api",
     tags=["Authentication"],
+)
+
+app.include_router(
+    router=hobbies_router,
+    prefix="/api",
+    tags=["Hobbies"]
 )

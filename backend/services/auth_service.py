@@ -16,7 +16,6 @@ class AuthService:
         user = results.first()
         return user
 
-
     async def check_if_user_exists(self, email: EmailStr, session: AsyncSession) -> bool:
         user = await self.get_user_by_email(email = email, session = session)
 

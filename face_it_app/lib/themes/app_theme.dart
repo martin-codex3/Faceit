@@ -60,12 +60,7 @@ class AppTheme {
         elevation: 0.0,
         surfaceTintColor: Colors.transparent,
         backgroundColor: AppColors.primaryMainColor,
-        textStyle: TextStyle(
-          color: AppColors.primaryBlack,
-          fontSize: 18,
-          fontWeight: FontWeight.w700,
-        ),
-        iconColor: AppColors.primaryBlack,
+        textStyle: TextStyle(fontSize: 18, fontWeight: FontWeight.w700),
         padding: const EdgeInsets.all(12),
       ),
     ),
@@ -75,12 +70,20 @@ class AppTheme {
       elevation: 0.0,
       behavior: SnackBarBehavior.floating,
       contentTextStyle: TextStyle(color: Colors.black),
+      insetPadding: const EdgeInsets.all(10),
+      showCloseIcon: true,
     ),
 
     // for the bottom app bar
     bottomAppBarTheme: BottomAppBarThemeData(
       elevation: 0,
       surfaceTintColor: Colors.transparent,
+    ),
+
+    // for the circular progress indicator
+    progressIndicatorTheme: ProgressIndicatorThemeData(
+      color: Colors.black,
+      strokeWidth: 3,
     ),
   );
 }

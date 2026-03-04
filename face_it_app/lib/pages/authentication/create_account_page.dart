@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:face_it_app/controllers/auth_controllers/auth_controller.dart';
 import 'package:face_it_app/models/user/user.dart';
 import 'package:face_it_app/shared/styled_body_text.dart';
@@ -26,6 +27,10 @@ class _CreateAccountPageState extends ConsumerState<CreateAccountPage> {
   // for obscuring the password text here
   bool obscurePassword = false;
 
+  // for the errors here
+  final _fieldErrors = {};
+  dynamic validationErrors;
+
   // we will dispose the fields here
   @override
   void dispose() {
@@ -43,9 +48,50 @@ class _CreateAccountPageState extends ConsumerState<CreateAccountPage> {
     });
   }
 
+  // we will clear the errors here
+  void _clearFieldErrors() {
+    _fullname.clear();
+    _email.clear();
+    _phoneNumber.clear();
+    _username.clear();
+    _password.clear();
+  }
+
   @override
   Widget build(BuildContext context) {
     final userprovider = ref.watch(authProvider);
+
+    ref.listen(authProvider, (previous, next) {
+      next.when(
+        data: (data) {
+          if (data != null) {
+            setState(() {
+              snackBarWidget(context, data.message);
+              _fieldErrors.clear(); // we will clear the errors here
+              _clearFieldErrors();
+            });
+          }
+        },
+        error: (error, stackTrace) {
+          _fieldErrors.clear();
+          if (error is DioException) {
+            validationErrors = error.response!.data;
+
+            if (validationErrors is String) {
+              snackBarWidget(context, validationErrors);
+            }
+
+            if (validationErrors is Map<String, dynamic>) {
+              setState(() {
+                _fieldErrors.addAll(validationErrors["errors"]);
+                snackBarWidget(context, validationErrors["message"].toString());
+              });
+            }
+          }
+        },
+        loading: () => {},
+      );
+    });
 
     return Scaffold(
       appBar: AppBar(title: StyledHeadingText(text: "Create Account")),
@@ -70,6 +116,9 @@ class _CreateAccountPageState extends ConsumerState<CreateAccountPage> {
                             onTapOutside: (event) {
                               FocusScope.of(context).unfocus();
                             },
+                            decoration: InputDecoration(
+                              errorText: _fieldErrors["fullname"],
+                            ),
                             validator: (value) {
                               if (value == null || value.isEmpty) {
                                 return "Enter your name";
@@ -89,11 +138,14 @@ class _CreateAccountPageState extends ConsumerState<CreateAccountPage> {
                           StyledBodyText(text: "Your phone number"),
                           TextFormField(
                             keyboardType: TextInputType.phone,
-                            decoration: InputDecoration(),
+                            decoration: InputDecoration(
+                              errorText: _fieldErrors["phone_number"],
+                            ),
                             controller: _phoneNumber,
                             onTapOutside: (event) {
                               FocusScope.of(context).unfocus();
                             },
+
                             validator: (value) {
                               if (value == null || value.isEmpty) {
                                 return "Enter your phone number";
@@ -116,6 +168,7 @@ class _CreateAccountPageState extends ConsumerState<CreateAccountPage> {
                             keyboardType: TextInputType.emailAddress,
                             decoration: InputDecoration(
                               suffixIcon: Icon(TablerIcons.mail),
+                              errorText: _fieldErrors["email"],
                             ),
                             onTapOutside: (event) {
                               FocusScope.of(context).unfocus();
@@ -150,6 +203,7 @@ class _CreateAccountPageState extends ConsumerState<CreateAccountPage> {
                                     ? Icon(TablerIcons.eye_off)
                                     : Icon(TablerIcons.eye),
                               ),
+                              errorText: _fieldErrors["password"],
                             ),
                             onTapOutside: (event) {
                               FocusScope.of(context).unfocus();
@@ -189,11 +243,13 @@ class _CreateAccountPageState extends ConsumerState<CreateAccountPage> {
 
                 ref.read(authProvider.notifier).createAccount(user);
               },
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                spacing: 5,
-                children: [Text("Proceed")],
-              ),
+              child: userprovider.isLoading
+                  ? SizedBox(
+                      height: 20,
+                      width: 20,
+                      child: CircularProgressIndicator(),
+                    )
+                  : Text("Proceed"),
             ),
           ),
         ),

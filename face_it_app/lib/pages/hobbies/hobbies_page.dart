@@ -1,8 +1,9 @@
+import 'package:face_it_app/controllers/hobbies_controllers/create_hobbies_notifier.dart';
 import 'package:face_it_app/controllers/hobbies_controllers/hobbies_controller.dart';
+import 'package:face_it_app/models/create_hobbies/create_hobbies.dart';
+import 'package:face_it_app/pages/authentication/login_page.dart';
 import 'package:face_it_app/shared/styled_body_text.dart';
 import 'package:face_it_app/shared/styled_heading_text.dart';
-import 'package:face_it_app/shared/styled_title_text.dart';
-import 'package:face_it_app/themes/app_colors.dart';
 import 'package:face_it_app/widgets/snackbar_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -22,6 +23,30 @@ class _HobbiesPageState extends ConsumerState<HobbiesPage> {
   @override
   Widget build(BuildContext context) {
     final hobbies = ref.watch(hobbieProvider);
+    final createHobbies = ref.watch(createHobbyProvider);
+
+    ref.listen(createHobbyProvider, (previous, next) {
+      next.when(
+        data: (data) {
+          snackBarWidget(context, "Account created successfully");
+
+          // we will navigate the page here
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+              builder: (context) {
+                return LoginPage();
+              },
+            ),
+          );
+        },
+        error: (error, stackTrace) {
+          return snackBarWidget(context, error.toString());
+        },
+        loading: () {},
+      );
+    });
+
     return Scaffold(
       appBar: AppBar(title: StyledHeadingText(text: "Select hobbies")),
       body: hobbies.when(
@@ -159,8 +184,21 @@ class _HobbiesPageState extends ConsumerState<HobbiesPage> {
               if (_selectedHobbies.length <= 5) {
                 return snackBarWidget(context, "Select more than 5 hobbies");
               }
+
+              final selectedHobby = CreateHobbies(hobbies: _selectedHobbies);
+
+              // we will add the hobby here
+              ref
+                  .read(createHobbyProvider.notifier)
+                  .createNewHobby(selectedHobby);
             },
-            child: Text("Finalise Account Creation"),
+            child: createHobbies.isLoading
+                ? SizedBox(
+                    height: 20,
+                    width: 20,
+                    child: CircularProgressIndicator(),
+                  )
+                : Text("Finalise Account Creation"),
           ),
         ),
       ),

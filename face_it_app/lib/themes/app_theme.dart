@@ -78,12 +78,25 @@ class AppTheme {
     bottomAppBarTheme: BottomAppBarThemeData(
       elevation: 0,
       surfaceTintColor: Colors.transparent,
+      color: Colors.transparent,
     ),
 
     // for the circular progress indicator
     progressIndicatorTheme: ProgressIndicatorThemeData(
       color: Colors.black,
       strokeWidth: 3,
+    ),
+
+    chipTheme: ChipThemeData(
+      labelStyle: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+      showCheckmark: false,
+      elevation: 0.0,
+      surfaceTintColor: Colors.transparent,
+      padding: const EdgeInsets.symmetric(vertical: 10),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(100)),
+      labelPadding: const EdgeInsets.only(left: 15, right: 15),
+      selectedColor: AppColors.primaryMainColor,
+      secondaryLabelStyle: TextStyle(color: Colors.black),
     ),
   );
 }

@@ -1,4 +1,5 @@
 import 'package:face_it_app/pages/authentication/create_account_page.dart';
+import 'package:face_it_app/pages/hobbies/hobbies_page.dart';
 import 'package:face_it_app/pages/home_page/home_page.dart';
 import 'package:flutter/material.dart';
 import 'themes/app_theme.dart';
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: CreateAccountPage(),
+      home: HobbiesPage(),
       debugShowCheckedModeBanner: false,
       theme: AppTheme.darkTheme,
     );

@@ -3,6 +3,7 @@ import 'package:face_it_app/shared/styled_body_text.dart';
 import 'package:face_it_app/shared/styled_heading_text.dart';
 import 'package:face_it_app/shared/styled_title_text.dart';
 import 'package:face_it_app/themes/app_colors.dart';
+import 'package:face_it_app/widgets/snackbar_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_tabler_icons/flutter_tabler_icons.dart';
@@ -43,7 +44,7 @@ class _HobbiesPageState extends ConsumerState<HobbiesPage> {
                       Row(
                         spacing: 10,
                         children: [
-                          Icon(TablerIcons.artboard),
+                          Icon(TablerIcons.palette),
                           Text(
                             data[index].title,
                             style: TextStyle(fontSize: 22),
@@ -150,7 +151,15 @@ class _HobbiesPageState extends ConsumerState<HobbiesPage> {
         child: Padding(
           padding: const EdgeInsetsGeometry.all(8),
           child: FilledButton(
-            onPressed: () {},
+            onPressed: () {
+              if (_selectedHobbies.isEmpty) {
+                return snackBarWidget(context, "Select some hobbies");
+              }
+
+              if (_selectedHobbies.length <= 5) {
+                return snackBarWidget(context, "Select more than 5 hobbies");
+              }
+            },
             child: Text("Finalise Account Creation"),
           ),
         ),

@@ -70,7 +70,8 @@ class AppTheme {
       elevation: 0.0,
       behavior: SnackBarBehavior.floating,
       contentTextStyle: TextStyle(color: Colors.black),
-      insetPadding: const EdgeInsets.all(10),
+      insetPadding: const EdgeInsets.all(14),
+      shape: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
       showCloseIcon: true,
     ),
 
@@ -82,10 +83,7 @@ class AppTheme {
     ),
 
     // for the circular progress indicator
-    progressIndicatorTheme: ProgressIndicatorThemeData(
-      color: Colors.black,
-      strokeWidth: 3,
-    ),
+    progressIndicatorTheme: ProgressIndicatorThemeData(strokeWidth: 3),
 
     chipTheme: ChipThemeData(
       labelStyle: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),

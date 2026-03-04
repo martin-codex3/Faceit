@@ -1,10 +1,7 @@
 import 'dart:async';
-import 'dart:convert';
-
 import 'package:dio/dio.dart';
 import 'package:face_it_app/config/app_config.dart';
 import 'package:face_it_app/models/hobbies/user_hobbies.dart';
-import 'package:face_it_app/utils/json_parser/json_parser.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class HobbiesController extends AsyncNotifier<List<UserHobbies>> {

@@ -6,7 +6,7 @@ from sqlmodel import select
 
 
 # we will register the user here
-class UserSchema:
+class UserService:
     async def get_user_by_email(self, email: EmailStr, session: AsyncSession):
         statement = select(User).where(User.email == email)
         results = await session.exec(statement)

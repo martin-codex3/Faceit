@@ -1,4 +1,4 @@
-from pydantic import BaseModel, Field, EmailStr, Va, field_validator
+from pydantic import BaseModel, Field, EmailStr, field_validator, ValidationInfo
 from datetime import datetime
 
 class CreateUserSchema(BaseModel):
@@ -10,17 +10,20 @@ class CreateUserSchema(BaseModel):
 
     # validating the fullname here
     @field_validator("fullname")
-    async def validate_fullname(self, value: str):
+    @classmethod
+    async def validate_fullname(cls, value: str):
         if value is value.isalnum():
             raise ValueError("fullname cannot include numbers")
 
     @field_validator("hashed_password")
-    async def validate_short_password(self, value: int):
+    @classmethod
+    async def validate_short_password(cls, value: int):
         if value <= 1:
             raise ValueError("The password is two short")
 
     @field_validator("hashed_password")
-    async def validate_password_characters(self, value: str):
+    @classmethod
+    async def validate_password_characters(cls, value: str):
         if value is not value.isalnum():
             raise ValueError("The password should include numbers and letters")
         elif value.startswith(value.lower()):

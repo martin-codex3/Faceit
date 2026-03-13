@@ -16,4 +16,10 @@ class AppConfig(BaseSettings):
 
     # we will get the connection here
     def get_connection_string(self) -> str:
-        connection_string = f""
+        connection_string = f"postgres+asyncpg://{self.DATABASE_USER}:{self.DATABASE_PASSWORD}@{self.DATABASE_HOST}/{self.DATABASE_NAME}"
+        return connection_string
+
+
+# we will create the database object here
+AppConfig = AppConfig()
+AppConfig.get_connection_string() # we will get the database connection here

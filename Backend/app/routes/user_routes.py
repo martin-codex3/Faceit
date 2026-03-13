@@ -11,7 +11,7 @@ user_routes = APIRouter()
 user_service = UserService()
 
 # we will define the routes for the users here
-user_routes.post("/create-account", status_code=status.HTTP_201_CREATED, response_model=CreateUserSchema)
+@user_routes.post("/create-account", status_code=status.HTTP_201_CREATED, response_model=CreateUserSchema)
 async def create_user(user_data: CreateUserSchema, session: AsyncSession = Depends(app_session)):
     email: EmailStr = user_data.email
     user_exists = await user_service.check_is_user_exists(

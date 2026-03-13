@@ -11,22 +11,26 @@ class CreateUserSchema(BaseModel):
     # validating the fullname here
     @field_validator("fullname")
     @classmethod
-    async def validate_fullname(cls, value: str):
-        if value is value.isalnum():
+    def validate_fullname(cls, value: str):
+        if any(char.isdigit() for char in value):
             raise ValueError("fullname cannot include numbers")
+        return value
 
     @field_validator("hashed_password")
     @classmethod
-    async def validate_short_password(cls, value: int):
-        if value <= 1:
-            raise ValueError("The password is two short")
+    def validate_password(cls, value: str):
+        if len(value) < 8:
+            raise ValueError("Password must be at least 8 characters")
 
-    @field_validator("hashed_password")
-    @classmethod
-    async def validate_password_characters(cls, value: str):
-        if value is not value.isalnum():
-            raise ValueError("The password should include numbers and letters")
-        elif value.startswith(value.lower()):
-            raise ValueError("Password should include an uppercase letter")
+        if not any(c.isdigit() for c in value):
+            raise ValueError("Password must include a number")
+
+        if not any(c.isupper() for c in value):
+            raise ValueError("Password must include an uppercase letter")
+
+        if not any(c.islower() for c in value):
+            raise ValueError("Password must include a lowercase letter")
+
+        return value
 
 

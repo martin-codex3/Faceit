@@ -4,8 +4,15 @@ from datetime import datetime
 class CreateUserSchema(BaseModel):
     fullname: str = Field(min_length=1, max_length=20)
     email: EmailStr = Field(min_length=1)
-    hashed_password: str = Field(min_length=1, max_length=30)
-    created_at:
+    hashed_password: str = Field(min_length=1, max_length=30, exclude=True)
+    created_at: datetime = Field(default_factory=datetime.now)
+    updated_at: datetime = Field(default_factory=datetime.now)
+
+    # validating the fullname here
+    @field_validator("fullname")
+    async def validate_fullname(self, value: str):
+        if value is value.isalnum():
+            raise ValueError("fullname cannot include numbers")
 
     @field_validator("hashed_password")
     async def validate_short_password(self, value: int):

@@ -10,5 +10,5 @@ class User(SQLModel, table=True):
     fullname: str = Field(nullable=False, index=True)
     email: str = Field(nullable=False, index=True)
     hashed_password: str = Field(nullable=False, index=True)
-    created_at: datetime = Field(default_factory=lambda: datetime.now())
-    updated_at: datetime = Field(default_factory=lambda: datetime.now())
+    created_at: datetime = Field(default_factory=datetime.now)
+    updated_at: datetime = Field(default_factory=datetime.now)

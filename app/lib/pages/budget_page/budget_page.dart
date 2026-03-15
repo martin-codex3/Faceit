@@ -1,4 +1,3 @@
-import 'package:app/shared/styled_heading.dart';
 import 'package:app/shared/styled_title.dart';
 import 'package:app/widgets/styled_form.dart';
 import 'package:flutter/material.dart';
@@ -20,7 +19,70 @@ class _BudgetPageState extends State<BudgetPage> {
         child: SingleChildScrollView(
           physics: BouncingScrollPhysics(),
           child: Column(
-            children: [Form(child: styledForm("Fullname", TextFormField()))],
+            children: [
+              Form(
+                child: Column(
+                  spacing: 20,
+                  children: [
+                    styledForm(
+                      "Item name",
+                      TextFormField(
+                        style: TextStyle(fontSize: 16),
+                        keyboardType: TextInputType.text,
+                        onTapOutside: (event) {
+                          FocusScope.of(context).unfocus();
+                        },
+                      ),
+                    ),
+
+                    styledForm(
+                      "Item type",
+                      TextFormField(
+                        style: TextStyle(fontSize: 16),
+                        keyboardType: TextInputType.text,
+                        onTapOutside: (event) {
+                          FocusScope.of(context).unfocus();
+                        },
+                      ),
+                    ),
+
+                    styledForm(
+                      "Purchase date",
+                      TextFormField(
+                        style: TextStyle(fontSize: 16),
+                        keyboardType: TextInputType.datetime,
+                        onTapOutside: (event) {
+                          FocusScope.of(context).unfocus();
+                        },
+                      ),
+                    ),
+
+                    styledForm(
+                      "Amount in hand",
+                      TextFormField(
+                        style: TextStyle(fontSize: 16),
+                        keyboardType: TextInputType.number,
+                        onTapOutside: (event) {
+                          FocusScope.of(context).unfocus();
+                        },
+                      ),
+                    ),
+
+                    styledForm(
+                      "Description",
+                      TextFormField(
+                        style: TextStyle(fontSize: 16),
+                        keyboardType: TextInputType.text,
+                        maxLines: 4,
+                        onTapOutside: (event) {
+                          FocusScope.of(context).unfocus();
+                        },
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
           ),
         ),
       ),

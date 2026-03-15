@@ -51,5 +51,11 @@ class AppTheme {
         WidgetState.any: TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
       }),
     ),
+
+    // for the input theme
+    inputDecorationTheme: InputDecorationThemeData(
+      border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
+      contentPadding: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+    ),
   );
 }

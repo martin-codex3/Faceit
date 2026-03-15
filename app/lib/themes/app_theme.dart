@@ -4,12 +4,15 @@ import 'package:flutter/material.dart';
 class AppTheme {
   static final darkTheme = ThemeData(
     useMaterial3: true,
-    brightness: Brightness.dark,
+
     scaffoldBackgroundColor: AppColors.primaryBlack,
     primaryColor: AppColors.primaryGreen,
     fontFamily: "ProFont",
 
-    colorScheme: ColorScheme.fromSeed(seedColor: AppColors.primaryGreen),
+    colorScheme: ColorScheme.fromSeed(
+      seedColor: AppColors.primaryGreen,
+      brightness: Brightness.dark,
+    ),
 
     textTheme: TextTheme(
       bodyMedium: TextStyle(
@@ -36,6 +39,7 @@ class AppTheme {
       elevation: 0.0,
       surfaceTintColor: Colors.transparent,
       backgroundColor: Colors.transparent,
+      toolbarHeight: 80,
     ),
 
     // for the navigation bar

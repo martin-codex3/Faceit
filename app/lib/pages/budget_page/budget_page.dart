@@ -11,6 +11,7 @@ class BudgetPage extends StatefulWidget {
 }
 
 class _BudgetPageState extends State<BudgetPage> {
+  final _formKey = GlobalKey<FormState>();
   final TextEditingController _itemName = TextEditingController();
   final TextEditingController _itemType = TextEditingController();
   final TextEditingController _purchaseDate = TextEditingController();
@@ -38,6 +39,7 @@ class _BudgetPageState extends State<BudgetPage> {
           child: Column(
             children: [
               Form(
+                key: _formKey,
                 child: Column(
                   spacing: 20,
                   children: [
@@ -49,6 +51,12 @@ class _BudgetPageState extends State<BudgetPage> {
                         keyboardType: TextInputType.text,
                         onTapOutside: (event) {
                           FocusScope.of(context).unfocus();
+                        },
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return "fill in the name";
+                          }
+                          return null;
                         },
                       ),
                     ),
@@ -62,6 +70,12 @@ class _BudgetPageState extends State<BudgetPage> {
                         onTapOutside: (event) {
                           FocusScope.of(context).unfocus();
                         },
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return "Select the type";
+                          }
+                          return null;
+                        },
                       ),
                     ),
 
@@ -74,6 +88,12 @@ class _BudgetPageState extends State<BudgetPage> {
                         onTapOutside: (event) {
                           FocusScope.of(context).unfocus();
                         },
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return "Select the date";
+                          }
+                          return null;
+                        },
                       ),
                     ),
 
@@ -85,6 +105,12 @@ class _BudgetPageState extends State<BudgetPage> {
                         keyboardType: TextInputType.number,
                         onTapOutside: (event) {
                           FocusScope.of(context).unfocus();
+                        },
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return "Enter amount";
+                          }
+                          return null;
                         },
                       ),
                     ),
@@ -99,11 +125,21 @@ class _BudgetPageState extends State<BudgetPage> {
                         onTapOutside: (event) {
                           FocusScope.of(context).unfocus();
                         },
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return "Add description";
+                          }
+                          return null;
+                        },
                       ),
                     ),
 
                     StyledFilledButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        if (_formKey.currentState!.validate()) {
+                          // we will show the snack bar here
+                        }
+                      },
                       child: Text(
                         "Create your budget",
                         style: TextStyle(fontSize: 16),

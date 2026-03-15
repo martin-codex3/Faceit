@@ -57,6 +57,10 @@ class AppTheme {
     inputDecorationTheme: InputDecorationThemeData(
       border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
       contentPadding: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+      errorStyle: TextStyle(color: AppColors.primaryRed),
+      errorBorder: OutlineInputBorder(
+        borderSide: BorderSide(color: AppColors.primaryRed, width: 1),
+      ),
     ),
   );
 }

@@ -18,7 +18,7 @@ class AppTheme {
       bodyMedium: TextStyle(
         color: AppColors.primaryWhite,
         fontSize: 18,
-        fontWeight: FontWeight.w500,
+        fontWeight: FontWeight.w400,
       ),
 
       titleMedium: TextStyle(
@@ -39,7 +39,7 @@ class AppTheme {
       elevation: 0.0,
       surfaceTintColor: Colors.transparent,
       backgroundColor: Colors.transparent,
-      toolbarHeight: 80,
+      toolbarHeight: 70,
     ),
 
     // for the navigation bar

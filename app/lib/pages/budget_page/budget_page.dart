@@ -1,4 +1,5 @@
 import 'package:app/shared/styled_title.dart';
+import 'package:app/widgets/styled_filled_button.dart';
 import 'package:app/widgets/styled_form.dart';
 import 'package:flutter/material.dart';
 
@@ -77,6 +78,14 @@ class _BudgetPageState extends State<BudgetPage> {
                         onTapOutside: (event) {
                           FocusScope.of(context).unfocus();
                         },
+                      ),
+                    ),
+
+                    StyledFilledButton(
+                      onPressed: () {},
+                      child: Text(
+                        "Create your budget",
+                        style: TextStyle(fontSize: 18),
                       ),
                     ),
                   ],

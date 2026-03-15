@@ -11,6 +11,22 @@ class BudgetPage extends StatefulWidget {
 }
 
 class _BudgetPageState extends State<BudgetPage> {
+  final TextEditingController _itemName = TextEditingController();
+  final TextEditingController _itemType = TextEditingController();
+  final TextEditingController _purchaseDate = TextEditingController();
+  final TextEditingController _amountInHand = TextEditingController();
+  final TextEditingController _description = TextEditingController();
+
+  @override
+  void dispose() {
+    _itemName.dispose();
+    _itemType.dispose();
+    _purchaseDate.dispose();
+    _amountInHand.dispose();
+    _description.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,6 +44,7 @@ class _BudgetPageState extends State<BudgetPage> {
                     styledForm(
                       "Item name",
                       TextFormField(
+                        controller: _itemName,
                         style: TextStyle(fontSize: 16),
                         keyboardType: TextInputType.text,
                         onTapOutside: (event) {
@@ -39,6 +56,7 @@ class _BudgetPageState extends State<BudgetPage> {
                     styledForm(
                       "Item type",
                       TextFormField(
+                        controller: _itemType,
                         style: TextStyle(fontSize: 16),
                         keyboardType: TextInputType.text,
                         onTapOutside: (event) {
@@ -50,6 +68,7 @@ class _BudgetPageState extends State<BudgetPage> {
                     styledForm(
                       "Purchase date",
                       TextFormField(
+                        controller: _purchaseDate,
                         style: TextStyle(fontSize: 16),
                         keyboardType: TextInputType.datetime,
                         onTapOutside: (event) {
@@ -61,6 +80,7 @@ class _BudgetPageState extends State<BudgetPage> {
                     styledForm(
                       "Amount in hand",
                       TextFormField(
+                        controller: _amountInHand,
                         style: TextStyle(fontSize: 16),
                         keyboardType: TextInputType.number,
                         onTapOutside: (event) {
@@ -72,6 +92,7 @@ class _BudgetPageState extends State<BudgetPage> {
                     styledForm(
                       "Description",
                       TextFormField(
+                        controller: _description,
                         style: TextStyle(fontSize: 16),
                         keyboardType: TextInputType.text,
                         maxLines: 4,
@@ -85,7 +106,7 @@ class _BudgetPageState extends State<BudgetPage> {
                       onPressed: () {},
                       child: Text(
                         "Create your budget",
-                        style: TextStyle(fontSize: 18),
+                        style: TextStyle(fontSize: 16),
                       ),
                     ),
                   ],

@@ -17,7 +17,7 @@ class AppTheme {
     textTheme: TextTheme(
       bodyMedium: TextStyle(
         color: AppColors.primaryWhite,
-        fontSize: 18,
+        fontSize: 16,
         fontWeight: FontWeight.w400,
       ),
 
@@ -45,6 +45,7 @@ class AppTheme {
     // for the navigation bar
     navigationBarTheme: NavigationBarThemeData(
       elevation: 0.0,
+      height: 60,
       surfaceTintColor: Colors.transparent,
       backgroundColor: Colors.transparent,
       labelTextStyle: WidgetStateProperty.fromMap({

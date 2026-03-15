@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 class AppTheme {
   static final darkTheme = ThemeData(
+    useMaterial3: true,
     brightness: Brightness.dark,
     scaffoldBackgroundColor: AppColors.primaryBlack,
     primaryColor: AppColors.primaryGreen,
@@ -30,6 +31,13 @@ class AppTheme {
 
     // for the app bar here
     appBarTheme: AppBarThemeData(
+      elevation: 0.0,
+      surfaceTintColor: Colors.transparent,
+      backgroundColor: Colors.transparent,
+    ),
+
+    // for the navigation bar
+    navigationBarTheme: NavigationBarThemeData(
       elevation: 0.0,
       surfaceTintColor: Colors.transparent,
       backgroundColor: Colors.transparent,

@@ -1,19 +1,19 @@
+import 'package:app/controllers/budget_controller/budget_controller.dart';
 import 'package:app/models/budget/budget_model.dart';
 import 'package:app/shared/styled_title.dart';
-import 'package:app/themes/app_colors.dart';
 import 'package:app/widgets/styled_filled_button.dart';
 import 'package:app/widgets/styled_form.dart';
-import 'package:app/widgets/styled_snackbar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class BudgetPage extends StatefulWidget {
+class BudgetPage extends ConsumerStatefulWidget {
   const BudgetPage({super.key});
 
   @override
-  State<BudgetPage> createState() => _BudgetPageState();
+  ConsumerState<BudgetPage> createState() => _BudgetPageState();
 }
 
-class _BudgetPageState extends State<BudgetPage> {
+class _BudgetPageState extends ConsumerState<BudgetPage> {
   final _formKey = GlobalKey<FormState>();
   final TextEditingController _itemName = TextEditingController();
   final TextEditingController _itemType = TextEditingController();
@@ -141,23 +141,18 @@ class _BudgetPageState extends State<BudgetPage> {
 
                     StyledFilledButton(
                       onPressed: () async {
-                        if (!_formKey.currentState!.validate()) {
-                          // we will show the snack bar here
-                          return styledSnackBar(
-                            context,
-                            "Correct the errors!",
-                            AppColors.primaryBlack,
-                          );
-                        }
-
                         // we will create an object to get the data here
-                        final _budgetModel = BudgetModel(
+                        final budgetModel = BudgetModel(
                           itemName: _itemName.text.trim(),
                           itemType: _itemType.text.trim(),
                           purchaseDate: _purchaseDate.text.trim(),
                           amountInHand: _amountInHand.text.trim(),
                           description: _description.text.trim(),
                         );
+
+                        ref
+                            .read(budgetProvider.notifier)
+                            .createPersonalBudget(budgetModel);
                       },
                       child: Text(
                         "Create your budget",

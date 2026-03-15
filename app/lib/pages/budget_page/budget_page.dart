@@ -18,6 +18,8 @@ class _BudgetPageState extends State<BudgetPage> {
   final TextEditingController _amountInHand = TextEditingController();
   final TextEditingController _description = TextEditingController();
 
+  bool onCliked = false;
+
   @override
   void dispose() {
     _itemName.dispose();
@@ -135,8 +137,8 @@ class _BudgetPageState extends State<BudgetPage> {
                     ),
 
                     StyledFilledButton(
-                      onPressed: () {
-                        if (_formKey.currentState!.validate()) {
+                      onPressed: () async {
+                        if (!_formKey.currentState!.validate()) {
                           // we will show the snack bar here
                         }
                       },

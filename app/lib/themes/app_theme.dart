@@ -51,6 +51,8 @@ class AppTheme {
       labelTextStyle: WidgetStateProperty.fromMap({
         WidgetState.any: TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
       }),
+      labelBehavior: NavigationDestinationLabelBehavior.alwaysShow,
+      indicatorColor: AppColors.primaryGreen.withValues(alpha: 0.2),
     ),
 
     // for the input theme

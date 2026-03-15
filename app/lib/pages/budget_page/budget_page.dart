@@ -1,6 +1,8 @@
 import 'package:app/shared/styled_title.dart';
+import 'package:app/themes/app_colors.dart';
 import 'package:app/widgets/styled_filled_button.dart';
 import 'package:app/widgets/styled_form.dart';
+import 'package:app/widgets/styled_snackbar.dart';
 import 'package:flutter/material.dart';
 
 class BudgetPage extends StatefulWidget {
@@ -140,6 +142,11 @@ class _BudgetPageState extends State<BudgetPage> {
                       onPressed: () async {
                         if (!_formKey.currentState!.validate()) {
                           // we will show the snack bar here
+                          return styledSnackBar(
+                            context,
+                            "Correct the errors!",
+                            AppColors.primaryBlack,
+                          );
                         }
                       },
                       child: Text(

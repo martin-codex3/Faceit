@@ -16,12 +16,15 @@ class _HomePageState extends State<HomePage> {
       body: Center(child: Text("hey mate")),
       bottomNavigationBar: NavigationBar(
         destinations: [
-          NavigationDestination(icon: Icon(TablerIcons.home), label: "Home"),
+          NavigationDestination(icon: Icon(TablerIcons.news), label: "News"),
           NavigationDestination(
-            icon: Icon(TablerIcons.home),
-            label: "Expenses",
+            icon: Icon(TablerIcons.calculator),
+            label: "Budget",
           ),
-          NavigationDestination(icon: Icon(TablerIcons.home), label: "Metrics"),
+          NavigationDestination(
+            icon: Icon(TablerIcons.chart_infographic),
+            label: "Metrics",
+          ),
         ],
       ),
     );

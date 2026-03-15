@@ -9,6 +9,8 @@ class AppTheme {
     primaryColor: AppColors.primaryGreen,
     fontFamily: "ProFont",
 
+    colorScheme: ColorScheme.fromSeed(seedColor: AppColors.primaryGreen),
+
     textTheme: TextTheme(
       bodyMedium: TextStyle(
         color: AppColors.primaryWhite,
@@ -41,6 +43,9 @@ class AppTheme {
       elevation: 0.0,
       surfaceTintColor: Colors.transparent,
       backgroundColor: Colors.transparent,
+      labelTextStyle: WidgetStateProperty.fromMap({
+        WidgetState.any: TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
+      }),
     ),
   );
 }

@@ -1,3 +1,4 @@
+import 'package:app/models/budget/budget_model.dart';
 import 'package:app/shared/styled_title.dart';
 import 'package:app/themes/app_colors.dart';
 import 'package:app/widgets/styled_filled_button.dart';
@@ -148,6 +149,15 @@ class _BudgetPageState extends State<BudgetPage> {
                             AppColors.primaryBlack,
                           );
                         }
+
+                        // we will create an object to get the data here
+                        final _budgetModel = BudgetModel(
+                          itemName: _itemName.text.trim(),
+                          itemType: _itemType.text.trim(),
+                          purchaseDate: _purchaseDate.text.trim(),
+                          amountInHand: _amountInHand.text.trim(),
+                          description: _description.text.trim(),
+                        );
                       },
                       child: Text(
                         "Create your budget",

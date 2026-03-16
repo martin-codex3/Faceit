@@ -3,7 +3,7 @@ from app.models.budget import BudgetModel
 from app.schemas.budget_schema import CreateBudgetSchema
 
 
-class BudgetSchema:
+class BudgetService:
 
     async def create_budget(self, budget_data: CreateBudgetSchema, session: AsyncSession):
         budget = budget_data.model_dump()

@@ -25,4 +25,17 @@ async def get_all_budgets(session: AsyncSession = Depends(app_session)):
 # we will attempt to create a new record here
 @budget_router.post("/create_budget", status_code=status.HTTP_201_CREATED)
 async def create_new_budget(budget_data: CreateBudgetSchema, session: AsyncSession = Depends(app_session)):
-    
+    new_budget = await budget_service.create_budget(
+        budget_data = budget_data,
+        session = session
+    )
+
+    if new_budget is None:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Failed to create the budget")
+    else:
+        return JSONResponse(
+            status_code = status.HTTP_201_CREATED,
+            content={
+                "message": "Budget created successfully"
+            }
+        )

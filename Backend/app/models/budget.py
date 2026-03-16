@@ -1,17 +1,20 @@
 from sqlmodel import SQLModel, Field, Column
+from sqlalchemy import JSON, DateTime
 import uuid
-from sqlalchemy import JSON
-from typing import Dict, Any
-from datetime import datetime
-
+from datetime import datetime, timezone
 
 class BudgetModel(SQLModel, table=True):
-
     __tablename__ = "budget"
 
     budget_id: uuid.UUID = Field(default_factory=uuid.uuid4, primary_key=True, nullable=False)
     item_name: str = Field(index=True, nullable=False)
-    item_type: Dict[str, Any] = Field(sa_column=Column(JSON))
-    purchase_date: datetime = Field(default_factory=lambda : datetime.now)
+    item_type: dict = Field(sa_column=Column(JSON))
+    purchase_date: datetime = Field(
+        default_factory=lambda: datetime.now(timezone.utc),
+        sa_column=Column(DateTime(timezone=True))
+    )
     description: str = Field(nullable=False, index=True)
-    created_at: datetime = Field(default_factory=lambda : datetime.now)
+    created_at: datetime = Field(
+        default_factory=lambda: datetime.now(timezone.utc),
+        sa_column=Column(DateTime(timezone=True))
+    )

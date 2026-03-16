@@ -11,7 +11,6 @@ class BudgetService:
         results = await session.exec(statement)
         return results.all()
 
-
     async def create_budget(self, budget_data: CreateBudgetSchema, session: AsyncSession):
         budget = budget_data.model_dump()
         new_budget = BudgetModel(**budget)

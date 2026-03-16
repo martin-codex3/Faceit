@@ -1,8 +1,8 @@
-"""creating the budget table
+"""running new migrations
 
-Revision ID: 4f6a0d26ba17
-Revises: cb79ea135685
-Create Date: 2026-03-16 10:48:43.152648
+Revision ID: 9b8eea9c276d
+Revises: 
+Create Date: 2026-03-16 11:49:25.133782
 
 """
 from typing import Sequence, Union
@@ -12,8 +12,8 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision: str = '4f6a0d26ba17'
-down_revision: Union[str, Sequence[str], None] = 'cb79ea135685'
+revision: str = '9b8eea9c276d'
+down_revision: Union[str, Sequence[str], None] = None
 branch_labels: Union[str, Sequence[str], None] = None
 depends_on: Union[str, Sequence[str], None] = None
 

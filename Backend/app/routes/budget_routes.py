@@ -38,6 +38,6 @@ async def create_new_budget(budget_data: CreateBudgetSchema, session: AsyncSessi
         return JSONResponse(
             status_code = status.HTTP_201_CREATED,
             content={
-                "message": "Budget created successfully"
+                "message": "Budget created successfully",
             }
         )

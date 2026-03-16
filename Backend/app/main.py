@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, exception_handlers
 from contextlib import asynccontextmanager
 from app.connection.app_database_connection import app_database_connection
 from app.routes.user_routes import user_routes
@@ -17,6 +17,10 @@ app = FastAPI(
     lifespan = lifespan,
     version=api_version,
 )
+
+
+# we will customize the error message response here
+
 
 app.include_router(
     router = user_routes,

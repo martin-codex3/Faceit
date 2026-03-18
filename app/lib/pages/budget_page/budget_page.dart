@@ -67,11 +67,15 @@ class _BudgetPageState extends ConsumerState<BudgetPage> {
                     ),
 
                     styledForm(
-                      "Item type",
+                      "Item category",
                       TextFormField(
                         controller: _itemType,
                         style: TextStyle(fontSize: 16),
                         keyboardType: TextInputType.text,
+                        decoration: InputDecoration(
+                          helperText: "Select category",
+                          hintText: "Categories",
+                        ),
                         onTapOutside: (event) {
                           FocusScope.of(context).unfocus();
                         },
@@ -121,7 +125,7 @@ class _BudgetPageState extends ConsumerState<BudgetPage> {
                     ),
 
                     styledForm(
-                      "Description",
+                      "Why are you buying the product",
                       TextFormField(
                         controller: _description,
                         style: TextStyle(fontSize: 16),
@@ -156,7 +160,10 @@ class _BudgetPageState extends ConsumerState<BudgetPage> {
                       },
                       child: Text(
                         "Create your budget",
-                        style: TextStyle(fontSize: 16),
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w500,
+                        ),
                       ),
                     ),
                   ],

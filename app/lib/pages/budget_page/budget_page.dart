@@ -1,5 +1,6 @@
 import 'package:app/controllers/budget_controller/budget_controller.dart';
 import 'package:app/models/budget/budget_model.dart';
+import 'package:app/pages/budget_categories/budget_categories.dart';
 import 'package:app/shared/styled_title.dart';
 import 'package:app/widgets/styled_filled_button.dart';
 import 'package:app/widgets/styled_form.dart';
@@ -35,18 +36,13 @@ class _BudgetPageState extends ConsumerState<BudgetPage> {
 
   // we will attempt to show the full page modal here
   void handleShowCategoriesModal() {
-    showDialog(
-      context: context,
-      builder: (context) {
-        return Dialog.fullscreen(
-          child: Container(
-            margin: const EdgeInsets.symmetric(vertical: 20),
-            child: SingleChildScrollView(
-              child: Column(children: [Text("We will start here!")]),
-            ),
-          ),
-        );
-      },
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) {
+          return BudgetCategories();
+        },
+      ),
     );
   }
 

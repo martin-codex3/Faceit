@@ -1,4 +1,5 @@
-import 'package:flutter/widgets.dart';
+import 'package:app/shared/styled_title.dart';
+import 'package:flutter/material.dart';
 
 class BudgetCategories extends StatefulWidget {
   const BudgetCategories({super.key});
@@ -10,6 +11,15 @@ class BudgetCategories extends StatefulWidget {
 class _BudgetCategoriesState extends State<BudgetCategories> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      appBar: AppBar(title: StyledTitle(text: "Categories"), centerTitle: true),
+      body: Container(
+        margin: const EdgeInsets.symmetric(vertical: 20),
+        child: SingleChildScrollView(
+          physics: BouncingScrollPhysics(),
+          child: Column(children: []),
+        ),
+      ),
+    );
   }
 }

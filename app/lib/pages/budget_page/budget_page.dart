@@ -42,7 +42,7 @@ class _BudgetPageState extends ConsumerState<BudgetPage> {
           child: Container(
             margin: const EdgeInsets.symmetric(vertical: 20),
             child: SingleChildScrollView(
-              child: Column(children: [Text("We will start here")]),
+              child: Column(children: [Text("We will start here!")]),
             ),
           ),
         );

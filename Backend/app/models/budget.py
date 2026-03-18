@@ -13,7 +13,7 @@ class BudgetModel(SQLModel, table=True):
         default_factory=lambda: datetime.now(timezone.utc),
         sa_column=Column(DateTime(timezone=True))
     )
-    amount_in_hand: float = Field(nullable=False)
+    amount_in_hand: int = Field(nullable=False, min_length=1)
     description: str = Field(nullable=False, index=True)
     created_at: datetime = Field(
         default_factory=lambda: datetime.now(timezone.utc),

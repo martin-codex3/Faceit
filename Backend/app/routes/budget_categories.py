@@ -1,12 +1,13 @@
-from fastapi import APIRouter
+from fastapi import APIRouter, status, Depends
 from fastapi.responses import JSONResponse
+from app.connection.app_database_connection import app_session
+from sqlmodel.ext.asyncio.session import AsyncSession
 
-# all the hobbles will be here
 all_budget_categories: list[dict] = [
     {
         "id": 1,
         "title": "Food & Groceries",
-        "hobbies": [
+        "categories": [
             "Groceries",
             "Eating out",
             "Coffee / Drinks",
@@ -17,7 +18,7 @@ all_budget_categories: list[dict] = [
     {
         "id": 2,
         "title": "Transport",
-        "hobbies": [
+        "categories": [
             "Fuel",
             "Public transport",
             "Taxi / Ride hailing",
@@ -29,7 +30,7 @@ all_budget_categories: list[dict] = [
     {
         "id": 3,
         "title": "Housing & Utilities",
-        "hobbies": [
+        "categories": [
             "Rent",
             "Electricity",
             "Water",
@@ -41,7 +42,7 @@ all_budget_categories: list[dict] = [
     {
         "id": 4,
         "title": "Health & Wellness",
-        "hobbies": [
+        "categories": [
             "Doctor visits",
             "Medication",
             "Gym",
@@ -53,7 +54,7 @@ all_budget_categories: list[dict] = [
     {
         "id": 5,
         "title": "Shopping",
-        "hobbies": [
+        "categories": [
             "Clothing",
             "Shoes",
             "Accessories",
@@ -65,7 +66,7 @@ all_budget_categories: list[dict] = [
     {
         "id": 6,
         "title": "Entertainment",
-        "hobbies": [
+        "categories": [
             "Movies",
             "Music / Concerts",
             "Games",
@@ -77,7 +78,7 @@ all_budget_categories: list[dict] = [
     {
         "id": 7,
         "title": "Education",
-        "hobbies": [
+        "categories": [
             "Tuition",
             "Books",
             "Course fees",
@@ -89,7 +90,7 @@ all_budget_categories: list[dict] = [
     {
         "id": 8,
         "title": "Savings & Financial",
-        "hobbies": [
+        "categories": [
             "Savings",
             "Emergency fund",
             "Investments",
@@ -100,5 +101,12 @@ all_budget_categories: list[dict] = [
     }
 ]
 
-hobbies_router = APIRouter()
+budget_categories_router = APIRouter()
 
+@budget_categories_router.get("/", status_code=status.HTTP_200_OK)
+async def get_all_categories(session: AsyncSession = Depends(app_session)):
+    return JSONResponse(
+        content={
+            "all_categories": all_budget_categories
+        }
+    )

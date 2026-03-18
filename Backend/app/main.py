@@ -5,7 +5,7 @@ from app.connection.app_database_connection import app_database_connection
 from app.routes.user_routes import user_routes
 from app.routes.budget_routes import budget_router
 from fastapi.middleware.cors import CORSMiddleware
-
+from app.routes.budget_categories import budget_categories_router
 
 api_version = "v1"
 
@@ -55,4 +55,10 @@ app.include_router(
     router=budget_router,
     prefix="/api",
     tags=["Budget"]
+)
+
+app.include_router(
+    router=budget_categories_router,
+    prefix="/api",
+    tags=["Budget Categories"]
 )

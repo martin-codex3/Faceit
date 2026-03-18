@@ -17,8 +17,8 @@ class StyledFilledButton extends StatelessWidget {
       child: FilledButton(
         onPressed: onPressed,
         style: FilledButton.styleFrom(
-          backgroundColor: AppColors.primaryGreen,
-          foregroundColor: Colors.black,
+          backgroundColor: AppColors.primaryBlue,
+          foregroundColor: AppColors.primaryWhite,
           padding: const EdgeInsets.all(10),
         ),
         child: child,

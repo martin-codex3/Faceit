@@ -6,11 +6,11 @@ class AppTheme {
     useMaterial3: true,
 
     scaffoldBackgroundColor: AppColors.primaryBlack,
-    primaryColor: AppColors.primaryGreen,
+    primaryColor: AppColors.primaryBlue,
     fontFamily: "ProFont",
 
     colorScheme: ColorScheme.fromSeed(
-      seedColor: AppColors.primaryGreen,
+      seedColor: AppColors.primaryBlue,
       brightness: Brightness.dark,
     ),
 
@@ -52,7 +52,7 @@ class AppTheme {
         WidgetState.any: TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
       }),
       labelBehavior: NavigationDestinationLabelBehavior.alwaysShow,
-      indicatorColor: AppColors.primaryGreen.withValues(alpha: 0.2),
+      indicatorColor: AppColors.primaryBlue.withValues(alpha: 0.2),
     ),
 
     // for the input theme

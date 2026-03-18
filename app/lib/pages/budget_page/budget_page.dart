@@ -33,6 +33,23 @@ class _BudgetPageState extends ConsumerState<BudgetPage> {
     super.dispose();
   }
 
+  // we will attempt to show the full page modal here
+  void handleShowCategoriesModal() {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return Dialog.fullscreen(
+          child: Container(
+            margin: const EdgeInsets.symmetric(vertical: 20),
+            child: SingleChildScrollView(
+              child: Column(children: [Text("We will start here")]),
+            ),
+          ),
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -72,6 +89,7 @@ class _BudgetPageState extends ConsumerState<BudgetPage> {
                         controller: _itemType,
                         style: TextStyle(fontSize: 16),
                         keyboardType: TextInputType.text,
+                        readOnly: true,
                         decoration: InputDecoration(
                           helperText: "Select category",
                           hintText: "Categories",
@@ -84,6 +102,9 @@ class _BudgetPageState extends ConsumerState<BudgetPage> {
                             return "Select the type";
                           }
                           return null;
+                        },
+                        onTap: () {
+                          handleShowCategoriesModal();
                         },
                       ),
                     ),

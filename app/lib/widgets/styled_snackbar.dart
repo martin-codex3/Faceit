@@ -8,15 +8,14 @@ void styledSnackBar(BuildContext context, String message, Color iconColor) {
       showCloseIcon: true,
       dismissDirection: DismissDirection.startToEnd,
       elevation: 0.0,
+      duration: Duration(seconds: 3),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-      content: Container(
-        child: Row(
-          spacing: 5,
-          children: [
-            Icon(TablerIcons.alert_circle, color: iconColor, size: 30),
-            Text(message, style: TextStyle()),
-          ],
-        ),
+      content: Row(
+        spacing: 5,
+        children: [
+          Icon(TablerIcons.alert_circle, color: iconColor, size: 30),
+          Text(message, style: TextStyle()),
+        ],
       ),
     ),
   );

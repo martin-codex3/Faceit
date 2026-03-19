@@ -3,6 +3,7 @@ import 'package:app/shared/styled_body.dart';
 import 'package:app/shared/styled_title.dart';
 import 'package:app/themes/app_colors.dart';
 import 'package:app/widgets/styled_filled_button.dart';
+import 'package:app/widgets/styled_snackbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_tabler_icons/flutter_tabler_icons.dart';
@@ -211,7 +212,24 @@ class _BudgetCategoriesPageState extends ConsumerState<BudgetCategoriesPage> {
         padding: const EdgeInsets.all(10),
         child: SizedBox(
           child: StyledFilledButton(
-            onPressed: () {},
+            onPressed: () {
+              if (_selectedCategories.isEmpty) {
+                styledSnackBar(
+                  context,
+                  "Select some categories",
+                  AppColors.primaryBlack,
+                );
+                return;
+              }
+
+              if (_selectedCategories.length < 2) {
+                styledSnackBar(
+                  context,
+                  "Add two or three categories",
+                  AppColors.primaryBlack,
+                );
+              }
+            },
             child: Text(
               "Save",
               style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),

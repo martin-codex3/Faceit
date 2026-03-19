@@ -17,6 +17,12 @@ class BudgetCategoriesController extends AsyncNotifier<List<BudgetCategories>> {
 
     return categories;
   }
+
+  Future<List<String>> handleSelectedCategories(
+    List<String> selectedCategories,
+  ) async {
+    return selectedCategories;
+  }
 }
 
 // the provider

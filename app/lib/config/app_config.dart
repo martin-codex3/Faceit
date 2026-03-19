@@ -4,7 +4,7 @@ class AppConfig {
   static final dio = Dio(
     BaseOptions(
       headers: {"Content-Type": "application/json"},
-      baseUrl: "192.168.1.189:8080/api",
+      baseUrl: "http://192.168.1.194:8080/api",
       contentType: "application/json",
       connectTimeout: Duration(seconds: 3000),
       receiveTimeout: Duration(seconds: 5000),

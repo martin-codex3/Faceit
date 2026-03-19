@@ -1,6 +1,6 @@
 import 'package:app/controllers/budget_controller/budget_controller.dart';
 import 'package:app/models/budget/budget_model.dart';
-import 'package:app/pages/budget_categories/budget_categories.dart';
+import 'package:app/pages/budget_categories/budget_categories_page.dart';
 import 'package:app/shared/styled_title.dart';
 import 'package:app/widgets/styled_filled_button.dart';
 import 'package:app/widgets/styled_form.dart';
@@ -40,7 +40,7 @@ class _BudgetPageState extends ConsumerState<BudgetPage> {
       context,
       MaterialPageRoute(
         builder: (context) {
-          return BudgetCategories();
+          return BudgetCategoriesPage();
         },
       ),
     );

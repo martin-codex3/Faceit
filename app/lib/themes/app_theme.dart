@@ -40,6 +40,7 @@ class AppTheme {
       surfaceTintColor: Colors.transparent,
       backgroundColor: Colors.transparent,
       toolbarHeight: 70,
+      foregroundColor: AppColors.primaryWhite,
     ),
 
     // for the navigation bar

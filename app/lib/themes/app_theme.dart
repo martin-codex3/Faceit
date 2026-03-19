@@ -65,5 +65,19 @@ class AppTheme {
         borderSide: BorderSide(color: AppColors.primaryRed, width: 1),
       ),
     ),
+
+    // for the chip
+    chipTheme: ChipThemeData(
+      elevation: 0.0,
+      surfaceTintColor: Colors.transparent,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(100)),
+      labelPadding: const EdgeInsets.only(left: 15, right: 15),
+      padding: const EdgeInsets.symmetric(vertical: 10),
+      labelStyle: TextStyle(
+        color: AppColors.primaryWhite,
+        fontSize: 14,
+        fontWeight: FontWeight.bold,
+      ),
+    ),
   );
 }

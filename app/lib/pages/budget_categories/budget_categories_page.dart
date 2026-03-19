@@ -20,6 +20,7 @@ class _BudgetCategoriesPageState extends ConsumerState<BudgetCategoriesPage> {
       appBar: AppBar(title: StyledTitle(text: "Budget Categories")),
       body: categoriesProvider.when(
         data: (data) => ListView.builder(
+          physics: BouncingScrollPhysics(),
           itemCount: data.length,
           itemBuilder: (context, index) {
             return Container(
@@ -28,11 +29,10 @@ class _BudgetCategoriesPageState extends ConsumerState<BudgetCategoriesPage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Wrap(
+                    spacing: 5,
+                    runSpacing: 5,
                     children: data[index].categories.map((e) {
                       return FilterChip(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(100),
-                        ),
                         label: Text(data[index].title.toString()),
                         onSelected: (value) {},
                       );

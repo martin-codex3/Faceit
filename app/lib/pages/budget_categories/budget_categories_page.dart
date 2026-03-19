@@ -39,7 +39,13 @@ class _BudgetCategoriesPageState extends ConsumerState<BudgetCategoriesPage> {
                           color: AppColors.primaryWhite,
                           size: 30,
                         ),
-                        Text(data[index].title),
+                        Text(
+                          data[index].title,
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
                       ],
                     ),
 
@@ -52,7 +58,13 @@ class _BudgetCategoriesPageState extends ConsumerState<BudgetCategoriesPage> {
                           color: AppColors.primaryWhite,
                           size: 30,
                         ),
-                        Text(data[index].title),
+                        Text(
+                          data[index].title,
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
                       ],
                     ),
 
@@ -65,7 +77,13 @@ class _BudgetCategoriesPageState extends ConsumerState<BudgetCategoriesPage> {
                           color: AppColors.primaryWhite,
                           size: 30,
                         ),
-                        Text(data[index].title),
+                        Text(
+                          data[index].title,
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
                       ],
                     ),
 
@@ -78,7 +96,13 @@ class _BudgetCategoriesPageState extends ConsumerState<BudgetCategoriesPage> {
                           color: AppColors.primaryWhite,
                           size: 30,
                         ),
-                        Text(data[index].title),
+                        Text(
+                          data[index].title,
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
                       ],
                     ),
 
@@ -91,7 +115,13 @@ class _BudgetCategoriesPageState extends ConsumerState<BudgetCategoriesPage> {
                           color: AppColors.primaryWhite,
                           size: 30,
                         ),
-                        Text(data[index].title),
+                        Text(
+                          data[index].title,
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
                       ],
                     ),
 
@@ -104,7 +134,13 @@ class _BudgetCategoriesPageState extends ConsumerState<BudgetCategoriesPage> {
                           color: AppColors.primaryWhite,
                           size: 30,
                         ),
-                        Text(data[index].title),
+                        Text(
+                          data[index].title,
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
                       ],
                     ),
 
@@ -117,7 +153,13 @@ class _BudgetCategoriesPageState extends ConsumerState<BudgetCategoriesPage> {
                           color: AppColors.primaryWhite,
                           size: 30,
                         ),
-                        Text(data[index].title),
+                        Text(
+                          data[index].title,
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
                       ],
                     ),
 
@@ -130,7 +172,13 @@ class _BudgetCategoriesPageState extends ConsumerState<BudgetCategoriesPage> {
                           color: AppColors.primaryWhite,
                           size: 30,
                         ),
-                        Text(data[index].title),
+                        Text(
+                          data[index].title,
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
                       ],
                     ),
 

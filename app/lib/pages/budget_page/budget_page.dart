@@ -1,4 +1,5 @@
 import 'package:app/controllers/budget_controller/budget_controller.dart';
+import 'package:app/controllers/budget_controller/selected_categories_controller.dart';
 import 'package:app/models/budget/budget_model.dart';
 import 'package:app/pages/budget_categories/budget_categories_page.dart';
 import 'package:app/shared/styled_title.dart';
@@ -48,6 +49,15 @@ class _BudgetPageState extends ConsumerState<BudgetPage> {
 
   @override
   Widget build(BuildContext context) {
+    ref.listen(selectedCategoriesProvider, (previous, next) {
+      next.when(
+        data: (data) {
+          print(data);
+        },
+        error: (error, stackTrace) {},
+        loading: () {},
+      );
+    });
     return Scaffold(
       appBar: AppBar(title: StyledTitle(text: "Your budget")),
       body: Container(
@@ -90,6 +100,7 @@ class _BudgetPageState extends ConsumerState<BudgetPage> {
                           helperText: "Select category",
                           hintText: "Categories",
                         ),
+                        maxLines: 2,
                         onTapOutside: (event) {
                           FocusScope.of(context).unfocus();
                         },

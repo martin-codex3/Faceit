@@ -1,4 +1,5 @@
 import 'package:app/controllers/budget_controller/budget_categories_controller.dart';
+import 'package:app/controllers/budget_controller/selected_categories_controller.dart';
 import 'package:app/shared/styled_body.dart';
 import 'package:app/shared/styled_title.dart';
 import 'package:app/themes/app_colors.dart';
@@ -19,6 +20,7 @@ class BudgetCategoriesPage extends ConsumerStatefulWidget {
 class _BudgetCategoriesPageState extends ConsumerState<BudgetCategoriesPage> {
   // for the categories
   final List<String> _selectedCategories = [];
+  bool onSelected = true;
 
   @override
   Widget build(BuildContext context) {
@@ -192,7 +194,20 @@ class _BudgetCategoriesPageState extends ConsumerState<BudgetCategoriesPage> {
                     children: data[index].categories.map((category) {
                       return FilterChip(
                         label: Text(category),
-                        onSelected: (value) {},
+                        selectedColor: AppColors.primaryBlue,
+                        showCheckmark: false,
+                        selected: _selectedCategories.contains(category),
+                        onSelected: (bool selected) {
+                          setState(() {
+                            if (selected) {
+                              _selectedCategories.add(category);
+                            }
+
+                            if (!selected) {
+                              _selectedCategories.remove(category);
+                            }
+                          });
+                        },
                       );
                     }).toList(),
                   ),
@@ -228,7 +243,12 @@ class _BudgetCategoriesPageState extends ConsumerState<BudgetCategoriesPage> {
                   "Add two or three categories",
                   AppColors.primaryBlack,
                 );
+                return;
               }
+
+              ref
+                  .read(selectedCategoriesProvider.notifier)
+                  .handleSelectedCategories(_selectedCategories);
             },
             child: Text(
               "Save",

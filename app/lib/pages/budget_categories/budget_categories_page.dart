@@ -249,6 +249,9 @@ class _BudgetCategoriesPageState extends ConsumerState<BudgetCategoriesPage> {
               ref
                   .read(selectedCategoriesProvider.notifier)
                   .handleSelectedCategories(_selectedCategories);
+
+              // we will close the page here
+              Navigator.pop(context);
             },
             child: Text(
               "Save",

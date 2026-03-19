@@ -3,8 +3,10 @@ import 'package:app/controllers/budget_controller/selected_categories_controller
 import 'package:app/models/budget/budget_model.dart';
 import 'package:app/pages/budget_categories/budget_categories_page.dart';
 import 'package:app/shared/styled_title.dart';
+import 'package:app/themes/app_colors.dart';
 import 'package:app/widgets/styled_filled_button.dart';
 import 'package:app/widgets/styled_form.dart';
+import 'package:app/widgets/styled_snackbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -24,6 +26,7 @@ class _BudgetPageState extends ConsumerState<BudgetPage> {
   final TextEditingController _description = TextEditingController();
 
   bool onCliked = false;
+  List<String> selectedCategories = [];
 
   @override
   void dispose() {
@@ -52,9 +55,21 @@ class _BudgetPageState extends ConsumerState<BudgetPage> {
     ref.listen(selectedCategoriesProvider, (previous, next) {
       next.when(
         data: (data) {
-          print(data);
+          if (data.isNotEmpty) {
+            selectedCategories.clear();
+            selectedCategories = data;
+            for (
+              int counter = 0;
+              counter < selectedCategories.length;
+              counter++
+            ) {
+              _itemType.text += "\t ${selectedCategories[counter]},";
+            }
+          }
         },
-        error: (error, stackTrace) {},
+        error: (error, stackTrace) {
+          styledSnackBar(context, error.toString(), AppColors.primaryBlack);
+        },
         loading: () {},
       );
     });

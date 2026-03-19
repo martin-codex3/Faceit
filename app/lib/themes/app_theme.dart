@@ -21,6 +21,12 @@ class AppTheme {
         fontWeight: FontWeight.w400,
       ),
 
+      displayMedium: TextStyle(
+        fontSize: 18,
+        fontWeight: FontWeight.w700,
+        color: AppColors.primaryWhite,
+      ),
+
       titleMedium: TextStyle(
         fontSize: 22,
         fontWeight: FontWeight.w700,
@@ -70,14 +76,18 @@ class AppTheme {
     chipTheme: ChipThemeData(
       elevation: 0.0,
       surfaceTintColor: Colors.transparent,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(100)),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(100),
+        side: BorderSide(color: AppColors.primaryWhite),
+      ),
       labelPadding: const EdgeInsets.only(left: 15, right: 15),
-      padding: const EdgeInsets.symmetric(vertical: 10),
       labelStyle: TextStyle(
         color: AppColors.primaryWhite,
         fontSize: 14,
         fontWeight: FontWeight.bold,
       ),
+      selectedColor: AppColors.primaryBlue,
+      secondaryLabelStyle: TextStyle(color: AppColors.primaryBlack),
     ),
   );
 }

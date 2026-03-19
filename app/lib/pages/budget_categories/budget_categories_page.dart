@@ -28,12 +28,32 @@ class _BudgetCategoriesPageState extends ConsumerState<BudgetCategoriesPage> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  if (data[index].title == "Food & Groceries")
+                    Text(data[index].title),
+
+                  if (data[index].title == "Transport") Text(data[index].title),
+
+                  if (data[index].title == "Housing & Utilities")
+                    Text(data[index].title),
+
+                  if (data[index].title == "Health & Wellness")
+                    Text(data[index].title),
+
+                  if (data[index].title == "Shopping") Text(data[index].title),
+
+                  if (data[index].title == "Entertainment")
+                    Text(data[index].title),
+
+                  if (data[index].title == "Education") Text(data[index].title),
+
+                  if (data[index].title == "Savings & Financial")
+                    Text(data[index].title),
+
                   Wrap(
-                    spacing: 5,
-                    runSpacing: 5,
-                    children: data[index].categories.map((e) {
+                    spacing: 8,
+                    children: data[index].categories.map((category) {
                       return FilterChip(
-                        label: Text(data[index].title.toString()),
+                        label: Text(category),
                         onSelected: (value) {},
                       );
                     }).toList(),
